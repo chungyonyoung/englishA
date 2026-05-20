@@ -12393,9 +12393,7 @@ footer{color:var(--muted);font-size:13px;line-height:1.6;padding:0 0 36px}
   };
 
   const parseTSV = (text) => {
-    const rows = String(text || '').replace(/^﻿/, '').split(/
-?
-/);
+    const rows = String(text || '').replace(/^\uFEFF/, '').split(/\r?\n/);
     const imported = [];
     rows.forEach((row, index) => {
       if (!row.trim() || row.trim().startsWith('#')) return;
